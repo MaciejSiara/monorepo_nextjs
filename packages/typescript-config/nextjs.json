@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Next.js",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./*"],
+      "@ui/*": ["../../packages/ui/src/*"],
+      "@utils/*": ["../../packages/utils/src/*"],
+      "@features/*": ["../../packages/features/src/*"],
+      "@use-case/core/*": ["../../packages/use-case/core/src/*"],
+      "@use-case/app2/*": ["../../packages/use-case/app2/src/*"],
+      "@ui/components/*": ["../../packages/ui/src/components/ui/*"],
+      "@ui/components/ui/*": ["../../packages/ui/src/components/ui/*"]
+    }
+  }
+}
