@@ -7,7 +7,6 @@ import { cn } from "@ui/lib/utils";
 
 import { Button } from "@ui/components/button";
 
-import { toast } from "@ui/hooks/use-toast";
 import {
   Form as FormCmp,
   FormControl,
@@ -18,9 +17,10 @@ import {
   FormMessage,
 } from "@ui/components/ui/form";
 import { Input } from "@ui/components/ui/input";
-import { FormSchema } from "./schema";
-import { useSignInByUserNameConfig } from "./config";
+import { FormSchema } from "../schema";
 import { forwardRef, type ReactNode } from "react";
+import { toastFactory } from "./toasts";
+import { useSignInByUserName } from "../domain/domain";
 
 export interface SignInByUserNameFormProps {
   children: ReactNode;
@@ -30,7 +30,7 @@ export const Form = forwardRef<
   HTMLFormElement,
   React.HTMLAttributes<HTMLFormElement>
 >(({ children, ...props }, ref) => {
-  const { repository, afterSignInAction } = useSignInByUserNameConfig();
+  const signInByUserName = useSignInByUserName();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -41,29 +41,12 @@ export const Form = forwardRef<
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      const res = await repository.signIn(data.username);
-      console.log(res);
-
-      toast({
-        title: "Signed in with:",
-        description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-          </pre>
-        ),
-      });
-
-      afterSignInAction(res);
+      const res = await signInByUserName(data);
+      // this is strictly connected with UI so we leave it there
+      toastFactory.createSuccessToast(res);
     } catch (e) {
-      toast({
-        variant: "destructive",
-        title: "Sign in error:",
-        description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">{JSON.stringify(e, null, 2)}</code>
-          </pre>
-        ),
-      });
+      // this is strictly connected with UI
+      toastFactory.createErrorToast(e);
     }
   }
 
@@ -137,5 +120,3 @@ export const UserNameInput = () => {
     />
   );
 };
-
-export * from "./config";

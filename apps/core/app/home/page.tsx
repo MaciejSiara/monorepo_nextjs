@@ -1,5 +1,5 @@
-import { Home } from "@features/Home/Home";
+import { HomeScreen } from "@app/core/Home/screen";
 
 export default function Page() {
-  return <Home />;
+  return <HomeScreen />;
 }

@@ -14,8 +14,8 @@
       "@ui/*": ["../../packages/ui/src/*"],
       "@utils/*": ["../../packages/utils/src/*"],
       "@features/*": ["../../packages/features/src/*"],
-      "@use-case/core/*": ["../../packages/use-case/core/src/*"],
-      "@use-case/app2/*": ["../../packages/use-case/app2/src/*"],
+      "@app/core/*": ["../../packages/app/core/src/*"],
+      "@app/app2/*": ["../../packages/app/app2/src/*"],
       "@ui/components/*": ["../../packages/ui/src/components/ui/*"],
       "@ui/components/ui/*": ["../../packages/ui/src/components/ui/*"]
     }

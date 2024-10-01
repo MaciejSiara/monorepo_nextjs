@@ -1,15 +1,19 @@
 "use client";
 import { AuthRepository } from "../repository";
-import * as SignInByUserName from "@features/Auth/SignInByUserName/SignInByUserName";
+import * as SignInByUserName from "@features/Auth/SignInByUserName";
+import { useHomeRouter } from "@app/core/Home/router";
 
 export const SignInScreenConfig = ({ children }: any) => {
+  const homeRouter = useHomeRouter();
+
   return (
     <SignInByUserName.SignInConfigByUserNameProvider
       config={{
-        afterSignInAction: () => {
+        signInFinalAction: () => {
           console.log("APP 2: after sign in");
+          homeRouter.push();
         },
-        repository: AuthRepository,
+        authRepository: AuthRepository,
       }}
     >
       {children}

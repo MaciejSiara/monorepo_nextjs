@@ -8,11 +8,11 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@ui/*": ["../../../packages/ui/src/*"],
-      "@utils/*": ["../../../packages/utils/src/*"],
-      "@features/*": ["../../../packages/features/src/*"],
-      "@ui/components/*": ["../../../packages/ui/src/components/ui/*"],
-      "@ui/components/ui/*": ["../../../packages/ui/src/components/ui/*"]
+      "@ui/*": ["../../ui/src/*"],
+      "@utils/*": ["../../utils/src/*"],
+      "@features/*": ["../../features/src/*"],
+      "@ui/components/*": ["../../ui/src/components/ui/*"],
+      "@ui/components/ui/*": ["../../ui/src/components/ui/*"]
     }
   },
 

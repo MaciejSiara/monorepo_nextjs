@@ -1,4 +1,4 @@
-import "@ui/styles/globals.css";
+import "@app/app2/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "@ui/components/toaster";

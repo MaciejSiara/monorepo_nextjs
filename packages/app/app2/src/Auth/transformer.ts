@@ -1,4 +1,4 @@
-import { type AuthRepository as IAuthRepository } from "@features/Auth/domain";
+import { type AuthRepository } from "@features/Auth/repository";
 
 import { SignInResponseDto } from "./dto";
 
@@ -6,7 +6,7 @@ import { SignInResponseDto } from "./dto";
 export const dtoToDomain = {
   signInResponse: (
     dto: SignInResponseDto
-  ): Awaited<ReturnType<IAuthRepository["signIn"]>> => {
+  ): Awaited<ReturnType<AuthRepository["signInByUserName"]>> => {
     return { username: dto.name + dto.surname };
   },
 };

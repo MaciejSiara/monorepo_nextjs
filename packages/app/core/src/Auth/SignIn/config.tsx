@@ -1,18 +1,19 @@
 "use client";
+import { useHomeRouter } from "../../Home/router";
 import { AuthRepository } from "../repository";
-import * as SignInByUserName from "@features/Auth/SignInByUserName/SignInByUserName";
-import { useRouter } from "next/navigation";
+import * as SignInByUserName from "@features/Auth/SignInByUserName";
 
 export const SignInScreenConfig = ({ children }: any) => {
-  const router = useRouter();
+  const homeRouter = useHomeRouter();
+
   return (
     <SignInByUserName.SignInConfigByUserNameProvider
       config={{
-        afterSignInAction: () => {
+        signInFinalAction: () => {
           console.log("CORE: after sign in");
-          router.push("/home");
+          homeRouter.push();
         },
-        repository: AuthRepository,
+        authRepository: AuthRepository,
       }}
     >
       {children}
